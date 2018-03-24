@@ -1,0 +1,41 @@
+/* background color */
+
+body {
+	background-color: white;
+}
+
+/* navbar color */
+
+.navbar {
+	background-color: rgb(51, 153, 102);
+}
+
+#navbar-title {
+	color: white;
+}
+
+/* Main Content */
+
+.welcome-msg {
+	color: black;
+}
+
+.search-result {
+	color: blue;
+}
+
+#update_time {
+	color: black;
+}
+
+.entry {
+	background-color: rgb(240, 240, 240);
+}
+
+.alphabet {
+	color: black;
+}
+
+.text_container {
+	color: black;
+}

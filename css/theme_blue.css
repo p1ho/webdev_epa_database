@@ -1,0 +1,49 @@
+/* background color */
+
+body {
+	background-color: rgb(0, 0, 0);
+}
+
+/* navbar color */
+
+.navbar {
+	background-color: rgb(0, 96, 128);
+}
+
+#navbar-title {
+	color: white;
+}
+
+/* Main Content */
+
+.bg#blue {
+}
+
+.bg#orange {
+	visibility: hidden;
+}
+
+.welcome-msg {
+	color: white;
+}
+
+.search-result {
+	color: rgb(255, 255, 102);
+}
+
+#update_time {
+	color: white;
+}
+
+.entry {
+	background-color: rgb(31, 61, 122); /* Fallback for older browsers without RGBA-support */
+	background-color: rgba(31, 61, 122, .6);
+}
+
+.alphabet {
+	color: white;
+}
+
+.text_container {
+	color: white;
+}

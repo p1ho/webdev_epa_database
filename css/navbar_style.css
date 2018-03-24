@@ -1,0 +1,82 @@
+.navbar {
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	z-index: 4;
+}
+
+.navbar-heading {
+	display: block;
+	padding: 10px 10px;
+	float: left;
+}
+
+.navbar-heading img{
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+
+.navbar-heading #navbar-title {
+	font-size: 25px;
+	padding: 0 10px;
+	font-family: sans-serif;
+	vertical-align: middle;
+}
+
+#search-input {
+	border-radius: 4px;
+	font-size: 15px;
+	width: 45%;
+	height: 20px;
+	margin: 15px 0;
+	padding: 6px;
+	border: 0;
+}
+
+input:focus{
+	outline: 0;
+}
+
+.form-button {
+	border-radius: 4px;
+	font-size: 15x;
+	border: 0;
+	padding: 8px;
+	color: white;
+	background-color: rgb(75, 75, 75);
+}
+
+.form-button:hover {
+	background-color: rgb(125, 125, 125);
+}
+
+.form-button:active {
+	background-color: rgb(25, 25, 25);
+}
+
+.form-button:focus{
+	outline: 0;
+}
+
+button[type=submit] select{
+	border: 0;
+}
+
+@media only screen and (max-width: 1920px){
+	.navbar-heading #navbar-title {
+		font-size: 1.8vw;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.navbar-heading #navbar-title{
+		display: none;
+	}
+}

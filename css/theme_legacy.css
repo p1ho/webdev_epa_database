@@ -1,0 +1,62 @@
+/* background color */
+
+body {
+	background-color: rgb(230, 255, 255);
+}
+
+/* navbar color */
+
+.navbar {
+	background-color: rgb(51, 153, 102);
+}
+
+#navbar-title {
+	color: white;
+}
+
+/* Main Content */
+
+.bg#blue {
+	visibility: hidden;
+}
+
+.bg#orange {
+	visibility: hidden;
+}
+
+.welcome-msg {
+	color: black;
+}
+
+.search-result {
+	color: blue;
+}
+
+#update_time {
+	color: black;
+}
+
+.entry {
+	position: relative;
+	background-color: rgb(230, 255, 255);
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+.entry:hover {
+	background-color: rgb(255, 255, 255);
+	box-shadow: 1px 1px 5px black;
+	z-index: 1;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+
+.alphabet {
+	color: black;
+}
+
+.text_container {
+	color: black;
+}

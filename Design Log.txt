@@ -1,0 +1,88 @@
+The goal of this project:
+To create a database that is
+
+1. User Friendly
+2. Aesthetically Pleasing
+3. Easy to Maintain
+4. Performant
+
+Project was separated into the following sub-tasks
+
+1. Database Maintenance:
+
+In my opinion, idealy the interface and data have to be separated, so data-manager(DM) can maintain the database without html knowledge
+Since Excel is the medium most people are comfortable with, I chose it as the interface to add or remove data
+
+the data could either be stored into:
+1. XML
+2. JSON
+3. custom text format
+
+Immediately, I excluded "custom text format" because it requires further effort in generating a decoding algo (Javascript has built-in XML and JSON parsers)
+Since JSON is native to JS and is known to perform faster and has smaller footprint, I chose it as the storage format
+
+To go from Excel Sheet to JSON, I wrote a VBA Macro that outputs the data into one minified string for site's AJAX retrieval
+Although a minor detail, I also added a button on the Excel Sheet so the DM also doesn't require VBA Macro understanding
+
+2. AJAX
+
+As mentioned before, I wanted to skip the step of manually adding codes to the html and have it automatically generated
+Since the database is reasonably huge (with ~1500 entries w/ 5 sub-elements each), the fetching and DOM element creation process may take a couple seconds
+To improve user experience, I added a loading animation and made the entries fade in.
+
+3. Main UI
+
+- Responsive Web Design (RWD)
+Although most users of this website may not ever browse it on a mobile device, I still wanted a responsive design because
+their multi-task based workflow often requires them to decrease the window size (such as the screen snap-assist feature in Win 10)
+I did not want to rely on outside frameworks such as Twitter BootStrap because what I am trying to achieve may require highly customized CSS
+
+- Different Themes
+I received multiple conflicting feedbacks from users about their color preference for the site.
+I decided that the best way to address this is to create several custom themes that users may choose upon visit and could save the setting (using cookies) for later revisits.
+I also left instructions on how to submit their own themes in CSS format to the DM
+
+- Navbar and Sidebar
+The previous design had both the letter indices and search bar on the navbar, this was in my opinion detrimental to the RWD.
+Therefore, I left only the Logo (which would dissapear on smaller screensizes) and the search bar on the navbar and moved the letter indices to a slide-out sidebar.
+
+- Parallax Background
+This was not requested, but for the site to be aesthetically pleasing, I felt that it needed something fancy.
+Since the majority of user interaction with the site is scrolling, I wanted to make this experience as enjoyable as possible.
+
+While the idea was easy to explain and achieve, optimizing the experience was not:
+In general, there are two ways to achieve the parallax effect: 
+1. CSS based "transform: translateZ(px) scale(px)" solution (cite) 
+2. JS based "Scroll/Resize Event RequestAnimationFrame" solution
+
+I tried the CSS based solution on Chrome initially, performance-wise it was great,
+but because the parallax effect I desire requires several values only available from JS, I could not fine-tune it to the way I have pictured it.
+On top of that, it did not work well on Firefox(slow load) and Edge(failed animation) for reasons beyond my understanding.
+Also, because it is essentially forcing the GPU to render, it may:
+1. drain laptop batteries quickly (bad for the users)
+2. have significant performance gap between machines
+
+Thus, I turned to the JS solution which can be summarized as the following:
+1. It changes the background position based on 3 parameters: 
+- window.innerHeight(browser window height)
+- document.body.scrollHeight (webpage length)
+- window.pageYOffset(distance from the top of webpage)
+2. Add 2 Event Listeners: "Scroll event listener" and "Window Resize Listener", both of which would change the values of the 3 parameters.
+3. Create an animation function that specifies how to reposition the background with a "requestAnimationFrame" callback to itself at the end to generate the next frame (creating an endless animation loop essentially).
+4. Initialize the animation function with an interval of 10ms (16ms is 60fps), I was told that this reduces performance stuttering.
+
+Initially the JS solution had poor scrolling performance and it literally took me a whole day to ponder what went wrong,
+the answer is that since if the browser has to render a background image at a lower resolution, it has to make calculations to the missing values.
+Which means, if it has to do that on every single frame where values have to be interpolated, it will create performance hiccups.
+The best fix is to create multiple background pictures at different resolutions where the amount of interpolation can be minimized.
+I created several resolution "fall-backs" to account for snapped-on screensize, full screen-size, and 4K screen-size.
+Since the pictures went through pretty extreme Gaussian Blur, the size of the images were small.
+This did the trick, and the performance of the parallax scrolling was on par with that without the background.
+
+4. Search Function
+
+I did not want to create a replicate of "Ctrl-F", I wanted to be able to implement a Multi-Keyword search to improve better usability.
+On top of that, I wanted to include an option for users to search for a "fixed string" (strings including spaces)
+
+
+

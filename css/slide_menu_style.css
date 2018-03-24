@@ -1,0 +1,182 @@
+.sidebar {
+	top: 60px;
+	height: calc(100vh - 60px);
+	left: -7vw;
+	width: 7vw;
+	min-width: 70px;
+	z-index: 2;
+	position: fixed;
+	-moz-transition: left .2s;
+	-webkit-transition: left .2s; /* Safari */
+	transition: left .2s;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+	font-family: sans-serif;
+	background-color: rgb(20, 20, 20); /* Fallback for older browsers without RGBA-support */
+	background-color: rgba(20, 20, 20, .8);
+}
+
+.toggle {
+	position: absolute;
+	left: 7vw;
+	width: 20px;
+	height: 100%;
+	padding: 38vh 3px;
+	margin: 0;
+	background-color: black;
+	color: white;
+	font-size: 16px;
+}
+
+#slide {
+	display: none;
+}
+
+#slide:checked + .sidebar {
+	left: 0;
+}
+
+#slide:checked + .sidebar .toggle {
+	left: 7vw;
+}
+
+.letter-array {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 70%;
+	width: 100%;
+}
+
+.letter-array-column {
+	display: block;
+	width: 50%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	float: left;
+	outline: 0;
+}
+
+.letter-array-cell {
+	height: 7.12%;
+	overflow: hidden;
+}
+
+.letter-array-cell a {
+	display: block;
+	width: 100%;
+	height: 70%;
+	color: white;
+	padding-top: 1vh;
+	font-size: 1.8vh;
+	text-decoration: none;
+	background-color: rgb(50, 50, 50);
+	margin: 1.5px 1.5px 0 1.5px; /* 1.5 for some reason looks better */
+}
+
+.letter-array-cell a:hover {
+	background-color: rgb(204, 0, 102);
+}
+
+.letter-array-cell a:active {
+	background-color: rgb(102, 0, 51);
+}
+
+#theme-title {
+	background-color: rgb(41, 61, 61);
+	color: white;
+	font-size: 2.5vh;
+	padding-top: 1.2vh;
+	height: 19%;
+}
+
+.theme-choice-column {
+	display: block;
+	width: 100%;
+	height: 30%;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.theme-choice-cell {
+	width: 100%;
+	height: 25%;
+	margin: 1px 0;
+	background-size: cover;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+	opacity: .8;
+	overflow: hidden;
+}
+
+.theme-choice-cell:hover{
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+	opacity: 1;
+}
+
+.theme-choice-cell:active{
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+	opacity: .7;
+}
+
+input[type=radio] {
+	display: none;
+}
+
+.swap-theme {
+	display: block;
+    min-height: 100%; /* for the latest browsers which support min-height */
+    height: auto !important; /* for newer IE versions */
+    height: 100%; /* the only height-related attribute that IE6 does not ignore  */
+	color: white;
+	font-size: 2vh;
+	padding-top: 2vh;
+}
+
+#theme-winter {
+	background-image: url("../img/background-blue/button.jpg");
+}
+
+#theme-summer {
+	background-image: url("../img/background-orange/button.jpg");
+}
+
+#theme-legacy {
+	background-color: rgb(51, 153, 102);
+}
+
+.cursor-pointer {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.unselectable {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@keyframes bubbletext {
+	0%   {font-size: 16px;}
+	50%  {font-size: 20px; font-weight: bold;}
+	100% {font-size: 16px;}
+}
+
+@media only screen and (max-width: 1080px){
+	.sidebar {
+		width: 70px;
+		left: -70px;
+	}
+	.toggle {
+		left: 70px;
+	}
+	
+	#slide:checked + .sidebar .toggle {
+		left: 70px;
+	}
+}

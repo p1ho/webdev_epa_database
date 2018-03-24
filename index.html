@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+	<head>
+        <META NAME="robots" CONTENT="noindex,nofollow" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="description" content="Reference Database (Demo)" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Pokuan Ho" />
+        <!-- meta tags for linkedin -->
+        <meta property="og:title" content="Reference Database (Demo)" />
+        <meta property="og:image" content="https://p1ho.github.io/webdev_epa_database/img/thumbnail.png" />
+        <meta property="og:image:secure_url" content="https://p1ho.github.io/webdev_epa_database/img/thumbnail.png" />
+        <meta property="og:description" content="Demo of Internal Reference Database Design" />
+        <meta property="og:url" content="https://p1ho.github.io/webdev_epa_database/index.html" />
+        <meta property="og:type" content="website" />
+        
+		<title>EPA Reference Database (Demo)</title>
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="favicon/favicon.ico" />
+		<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+		<![endif]-->
+		<!-- My CSS -->
+		<link rel="stylesheet" type="text/css" href="css/loader.css" />
+		<link rel="stylesheet" type="text/css" href="css/database_style.css" />
+		<link rel="stylesheet" type="text/css" href="css/navbar_style.css" />
+		<link rel="stylesheet" type="text/css" href="css/slide_menu_style.css" />
+		<link id="page_theme" rel="stylesheet" href="css/theme_orange.css" type="text/css" />
+		<script  src="js/load_theme.js"></script>
+		<script>
+			//Set User Preference
+			if (typeof(Storage) !== "undefined" && localStorage.theme) {
+				load_theme(localStorage.theme);
+			} else {
+				load_theme("orange");
+			}
+		</script>
+		<!-- My JS -->
+		<script src="js/ie_script.js"></script>
+		<script src="js/window_onload.js"></script>
+		<script src="js/database_injection.js"></script>
+		<script src="js/parallax_scrolling.js"></script>
+		<script src="js/parallax_stopper.js"></script>
+		<script src="js/search.js"></script>
+		<script src="js/swap_theme.js"></script>
+		<script src="js/autoscroll.js"></script>
+		<script src="js/show_page.js"></script>
+	</head>
+	<body>
+		<!-- Pre-loader -->
+		<div class="loader-container">
+			<div class="loader"></div>
+			<p class="loader-msg"></p>
+		</div>
+		<!-- background-image -->
+		<div class="bg-container">
+			<picture id="blue" class="bg">
+				<source media="(max-width: 640px)" srcset="img/background-blue/800.jpg">
+				<source media="(max-width: 820px)" srcset="img/background-blue/1024.jpg">
+				<source media="(max-width: 1093px)" srcset="img/background-blue/1366.jpg">
+				<source media="(max-width: 1280px)" srcset="img/background-blue/1600.jpg">
+				<source media="(max-width: 1536px)" srcset="img/background-blue/1920.jpg">
+				<source media="(max-width: 2048px)" srcset="img/background-blue/2560.jpg">
+				<source media="(max-width: 3072px)" srcset="img/background-blue/3840.jpg">
+				<img src="img/background-blue/2560.jpg" alt="" style="width:100vw;min-height:100vh">
+			</picture>
+			<picture id="orange" class="bg">
+				<source media="(max-width: 640px)" srcset="img/background-orange/800.jpg">
+				<source media="(max-width: 820px)" srcset="img/background-orange/1024.jpg">
+				<source media="(max-width: 1093px)" srcset="img/background-orange/1366.jpg">
+				<source media="(max-width: 1280px)" srcset="img/background-orange/1600.jpg">
+				<source media="(max-width: 1536px)" srcset="img/background-orange/1920.jpg">
+				<source media="(max-width: 2048px)" srcset="img/background-orange/2560.jpg">
+				<source media="(max-width: 3072px)" srcset="img/background-orange/3840.jpg">
+				<img src="img/background-orange/2560.jpg" alt="" style="width:100vw;min-height:100vh">
+			</picture>
+		</div>
+		<nav class="navbar">
+			<div class="navbar-heading">
+				<img src="img/epa_logo.png" width="40" alt="epa" />
+				<span id="navbar-title">Reference Database</span>
+			</div>
+			<form name="search-form" class="form-group" onsubmit="return search();">
+				<input type="text" id="search-input" name="keywords" placeholder="Enter Keywords">
+				<button type="submit" name="submit-btn" class="form-button">Search</button>
+			</form>
+		</nav>
+		<!-- sidebar-->
+		<input type="checkbox" id="slide" name="slide-button" value="" />
+		<aside class="sidebar">
+			<label for="slide" class="toggle cursor-pointer unselectable">☰</label>
+			<div class="letter-array">
+				<div class="letter-array-column">
+					<div class="letter-array-cell"><a href="#A" class="autoscroll cursor-pointer unselectable">A</a></div>
+					<div class="letter-array-cell"><a href="#B" class="autoscroll cursor-pointer unselectable">B</a></div>
+					<div class="letter-array-cell"><a href="#C" class="autoscroll cursor-pointer unselectable">C</a></div>
+					<div class="letter-array-cell"><a href="#D" class="autoscroll cursor-pointer unselectable">D</a></div>
+					<div class="letter-array-cell"><a href="#E" class="autoscroll cursor-pointer unselectable">E</a></div>
+					<div class="letter-array-cell"><a href="#F" class="autoscroll cursor-pointer unselectable">F</a></div>
+					<div class="letter-array-cell"><a href="#G" class="autoscroll cursor-pointer unselectable">G</a></div>
+					<div class="letter-array-cell"><a href="#H" class="autoscroll cursor-pointer unselectable">H</a></div>
+					<div class="letter-array-cell"><a href="#I" class="autoscroll cursor-pointer unselectable">I</a></div>
+					<div class="letter-array-cell"><a href="#J" class="autoscroll cursor-pointer unselectable">J</a></div>
+					<div class="letter-array-cell"><a href="#K" class="autoscroll cursor-pointer unselectable">K</a></div>
+					<div class="letter-array-cell"><a href="#L" class="autoscroll cursor-pointer unselectable">L</a></div>
+					<div class="letter-array-cell"><a href="#M" class="autoscroll cursor-pointer unselectable">M</a></div>
+					<div class="letter-array-cell"><a href="#other" class="autoscroll cursor-pointer unselectable">其他</a></div>
+				</div>
+				<div class="letter-array-column">
+					<div class="letter-array-cell"><a href="#N" class="autoscroll cursor-pointer unselectable">N</a></div>
+					<div class="letter-array-cell"><a href="#O" class="autoscroll cursor-pointer unselectable">O</a></div>
+					<div class="letter-array-cell"><a href="#P" class="autoscroll cursor-pointer unselectable">P</a></div>
+					<div class="letter-array-cell"><a href="#Q" class="autoscroll cursor-pointer unselectable">Q</a></div>
+					<div class="letter-array-cell"><a href="#R" class="autoscroll cursor-pointer unselectable">R</a></div>
+					<div class="letter-array-cell"><a href="#S" class="autoscroll cursor-pointer unselectable">S</a></div>
+					<div class="letter-array-cell"><a href="#T" class="autoscroll cursor-pointer unselectable">T</a></div>
+					<div class="letter-array-cell"><a href="#U" class="autoscroll cursor-pointer unselectable">U</a></div>
+					<div class="letter-array-cell"><a href="#V" class="autoscroll cursor-pointer unselectable">V</a></div>
+					<div class="letter-array-cell"><a href="#W" class="autoscroll cursor-pointer unselectable">W</a></div>
+					<div class="letter-array-cell"><a href="#X" class="autoscroll cursor-pointer unselectable">X</a></div>
+					<div class="letter-array-cell"><a href="#Y" class="autoscroll cursor-pointer unselectable">Y</a></div>
+					<div class="letter-array-cell"><a href="#Z" class="autoscroll cursor-pointer unselectable">Z</a></div>
+					<div class="letter-array-cell"><a href="#top" class="autoscroll cursor-pointer unselectable">Top</a></div>
+				</div>
+			</div>
+			<div class="theme-choice-column">
+				<div id="theme-title" class="unselectable">Theme</div>
+                <div id="theme-summer" class="theme-choice-cell">
+					<input type="radio" id="theme1" name="theme" value="" onclick="parallax_stopper();swap_theme('orange');">
+					<label for="theme1" class="swap-theme cursor-pointer unselectable">Summer</label>
+				</div>
+				<div id="theme-winter" class="theme-choice-cell">
+					<input type="radio" id="theme2" name="theme" value="" onclick="parallax_stopper();swap_theme('blue');">
+					<label for="theme2" class="swap-theme cursor-pointer unselectable">Winter</label>
+				</div>
+				<div id="theme-legacy" class="theme-choice-cell">
+					<input type="radio" id="theme3" name="theme" value="" onclick="parallax_stopper();swap_theme('legacy');">
+					<label for="theme3" class="swap-theme cursor-pointer unselectable">Legacy</label>
+				</div>
+			</div>
+		</aside>
+		<!-- main-content -->
+		<main>
+			<h1 id="top" class="welcome-msg">Welcome to the New Database!</h1>
+			<!--
+			<p class="welcome-msg">
+				Supports:<br/>Multi-Keywords Searches<br/>Fixed-Word Searches (e.g. "Cognitive Psychology")
+			</p>
+			-->
+			<!-- Inject Content Holder -->
+            <p class="welcome-msg">Because this is a demo, links to Documents won't work.</p>
+			<p class="welcome-msg">If page lags severely, try <a id="redir" href="database-lowend.html">here</a></p>
+			<!-- Search Result Display Holder -->
+			<div class="search-result"></div>
+			<!-- Inject Content Holder -->
+			<div id="main_container">
+				<div id="A" class="alphabet">A</div>
+				<div id="B" class="alphabet">B</div>
+				<div id="C" class="alphabet">C</div>
+				<div id="D" class="alphabet">D</div>
+				<div id="E" class="alphabet">E</div>
+				<div id="F" class="alphabet">F</div>
+				<div id="G" class="alphabet">G</div>
+				<div id="H" class="alphabet">H</div>
+				<div id="I" class="alphabet">I</div>
+				<div id="J" class="alphabet">J</div>
+				<div id="K" class="alphabet">K</div>
+				<div id="L" class="alphabet">L</div>
+				<div id="M" class="alphabet">M</div>
+				<div id="N" class="alphabet">N</div>
+				<div id="O" class="alphabet">O</div>
+				<div id="P" class="alphabet">P</div>
+				<div id="Q" class="alphabet">Q</div>
+				<div id="R" class="alphabet">R</div>
+				<div id="S" class="alphabet">S</div>
+				<div id="T" class="alphabet">T</div>
+				<div id="U" class="alphabet">U</div>
+				<div id="V" class="alphabet">V</div>
+				<div id="W" class="alphabet">W</div>
+				<div id="X" class="alphabet">X</div>
+				<div id="Y" class="alphabet">Y</div>
+				<div id="Z" class="alphabet">Z</div>
+				<div id="other" class="alphabet">其他</div>
+			</div>
+		</main>
+	</body>
+</html>
